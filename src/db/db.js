@@ -8,6 +8,9 @@ if (!process.env.DATABASE_URL) {
 
 export const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  max: 40,
+  connectionTimeoutMillis: 8_000,
+  idleTimeoutMillis: 40_000,
 });
 
 export const db = drizzle(pool);
